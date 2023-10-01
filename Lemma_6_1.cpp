@@ -80,7 +80,6 @@ interval CAPD_J1()
 	// Upper bound of the derivative
 	interval upper_bound= 3*power(K,interval(-1./3))*power(C-power(K,interval(-2./3)),-3)*interval(-1.0,1.0);
 	
-	// In this case we have to do only from 4/3 to inf, so we can avoid the lower bound (since it is greater than 0 and the bad angle)
 	return I_J1(A,K,n) + upper_bound;
 
 }
@@ -95,7 +94,6 @@ interval CAPD_J2()
 	// Upper bound of the integral
 	interval upper_bound = 3*power(K,interval(-1./3));
 	
-	cout << "Upper bound J2 " << upper_bound << endl;
 	return I_J2(A,K,n) + upper_bound;
 }
 int main(int argc, char* argv[])
