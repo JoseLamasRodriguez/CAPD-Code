@@ -20,18 +20,14 @@ const interval k = 0.001;
 const interval K = 100;
 
 
-
 // TOL: distance to the bad_angle, the closest to the bad angle the worst precision we can get in capd
 const interval TOL = 0.45;
 
 // num_angles: Number of equidistant angles between 0 and 2pi
 const int num_angles = 10000;
 
-// A toy example to check the execution:
-//const int num_angles = 100;
 
-
-// Analytical expression of I1.
+// Integral I1.
 interval df(interval angles, interval t)
 {
 	interval fpart = power(t,interval(2./3))*cos(angles-t)*power(1+power(C,2.0)*power(t,interval(4./3))-2*C*power(t,interval(2./3))*cos(angles-t),interval(-3./2));
@@ -46,7 +42,7 @@ interval part(interval J,int n,int i) // i-th sub interval of J out of n
 }
 
 
-// integral from k to K (the estimated part)
+// Integral from k to K (capd algorithm)
 interval I(interval k, interval K, interval angles, int n)
 {
 	interval sum=0.0;
@@ -59,7 +55,7 @@ interval I(interval k, interval K, interval angles, int n)
 	return sum;
 }
 
-// Computation of the derivative
+// Computation of I1
 interval CAPD(interval angles, float dist)
 {
 	// Number of subintervals for each iteration of the algorithm. The closer to the singularity, the better has to be the precision
