@@ -20,7 +20,7 @@ const interval K = 10000.0;
 const interval A = interval(4./3);
 
 
-// integral J1
+// Integral J1
 interval J1(interval t)
 {
 	interval fpart = power(t,interval(2./3))*cos(-A-t)*power(1+power(C,2.0)*power(t,interval(4./3))-2*C*power(t,interval(2./3))*cos(-A-t),interval(-3./2));
@@ -29,7 +29,7 @@ interval J1(interval t)
 	return fpart - spart;
 }
 
-// integral J2
+// Integral J2
 interval J2(interval t)
 {
 
@@ -43,7 +43,7 @@ interval part(interval J,int n,int i) // i-th sub interval of J out of n
 	return J.left()+i*(J.right()-J.left())/n+(J-J.left())/n;
 }
 
-// integral J1 from 4/3 to K (capd algorithm)
+// Integral J1 from 4/3 to K (capd algorithm)
 interval I_J1(interval k, interval K, int n)
 {
 	interval sum=0.0;
@@ -57,7 +57,7 @@ interval I_J1(interval k, interval K, int n)
 	return sum;
 }
 
-// integral J2 from 4/3 to K (capd algorithm)
+// Integral J2 from 4/3 to K (capd algorithm)
 interval I_J2(interval k, interval K, int n)
 {
 	interval sum=0.0;
