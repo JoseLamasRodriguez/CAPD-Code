@@ -46,8 +46,6 @@ plt.grid(which='major', axis='x', zorder=-1.0)
 
 #Discontinuity at position 736-737 due to the singularity
 for i in range(736):
-  # plt.plot([angle_left[i],angle_right[i]],[data_right[i],data_right[i]],'b')
-  # plt.plot([angle_left[i],angle_right[i]],[data_left[i],data_left[i]],'b')
   pts = sg.Polygon([(angle_left[i],data_left[i]),(angle_left[i],data_right[i]),(angle_right[i],data_right[i]),(angle_right[i],data_left[i])])
   rect_left.append(pts)
 
