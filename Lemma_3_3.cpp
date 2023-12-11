@@ -66,8 +66,8 @@ interval CAPD(interval angles, float dist)
 	// int n = 100000;
 
 	// The upper and lower bound for the derivative 
-	interval dlower_bound = power(k,interval(5./3))*interval(3./5)* power(1+power(C,interval(2.0))*power(k,interval(4./3)) -2*C*power(k,interval(2./3)),interval(-3./2))*interval(-1.0,1.0);
-	interval dupper_bound = interval(3.0)*power(K,interval(-1./3))*power(C-power(K,interval(-2./3)),-3)*interval(-1.0,1.0);
+	interval dlower_bound = (interval(3./5)*power(k,interval(5./3))*power(1-C*power(k,interval(2./3)),interval(-3.0)) + interval(9./7)*C*power(k,interval(7./3))*power(1-C*power(k,interval(2./3)),interval(-5.0)))*interval(-1.0,1.0);
+	interval dupper_bound = (interval(3.0)*power(K,interval(-1./3))*power(C-power(K,interval(-2./3)),interval(-3.0)) + interval(3.0)*C*power(K,interval(-1.0))*power(C-power(K,interval(-2./3)),interval(-5.0)))*interval(-1.0,1.0);
 	
 	return dlower_bound + I(k,K,angles,n) + dupper_bound;
 
