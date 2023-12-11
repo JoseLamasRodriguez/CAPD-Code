@@ -52,13 +52,9 @@ for i in range(736):
   rect_left.append(pts)
 
 for i in range(737,angle_left.size):
-  # plt.plot([angle_left[i],angle_right[i]],[data_right[i],data_right[i]],'b')
-  # plt.plot([angle_left[i],angle_right[i]],[data_left[i],data_left[i]],'b')
   pts = sg.Polygon([(angle_left[i],data_left[i]),(angle_left[i],data_right[i]),(angle_right[i],data_right[i]),(angle_right[i],data_left[i])])
   rect_right.append(pts)
-# pts = sg.Polygon([(angle_left[0],data_left[0]),(angle_left[0],data_right[0]),(angle_right[0],data_right[0]),(angle_right[0],data_left[0])])
-# rect.append(pts)
-
+    
 new_shape_left = so.unary_union(rect_left)
 new_shape_right = so.unary_union(rect_right)
 #exterior coordinates split into two arrays, xs and ys
@@ -72,7 +68,6 @@ axs.fill(xxs,yys, alpha=0.5,fc='r', ec='None')
 plt.xlabel(r'$\theta$')
 plt.ylabel(r'$\frac{d}{d\theta}\;M_+(\theta)$')
 plt.vlines(math.sqrt(2)/3, -7, 1.1, 'black', '--', label='Singularity')
-#plt.vlines(2*np.pi - 4./3, 0.370392,0.891352, 'b', '-', label = r'$\theta = -\frac 4 3$')
 
 plt.hlines(0,0, 2*np.pi, 'm','--')
 plt.xlim(0,2*np.pi)
@@ -80,6 +75,5 @@ plt.ylim(-7,1.1)
 plt.plot()
 plt.legend(loc='lower right')
 plt.show()
-# plt.ylim(-17,17)
-# plt.show()
+
 
